@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1010017359501",
+    "project_id": "searchbar-30138",
+    "storage_bucket": "searchbar-30138.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010017359501:android:eb0ea003cd5d41835ef4c4",
+        "android_client_info": {
+          "package_name": "com.example.searchbar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHOoOnsYTf1Jjv41ewr32elJDSI9PpA1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
