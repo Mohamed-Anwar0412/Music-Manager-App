@@ -9,8 +9,11 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+<<<<<<< HEAD
 import android.widget.Button;
 import android.widget.ImageButton;
+=======
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+<<<<<<< HEAD
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -31,6 +35,15 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+=======
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
+import com.google.firebase.storage.StorageReference;
+
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,12 +65,19 @@ public class Search extends AppCompatActivity implements MyAdapter.OnItemClickLi
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.navigation_search);
+<<<<<<< HEAD
+=======
+//        searchView.setTextColor(getResources().getColor(android.R.color.white));
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
 
             if (id == R.id.navigation_home) {
+<<<<<<< HEAD
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+=======
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
                 finish();
                 return true;
             } else if (id == R.id.navigation_search) {
@@ -73,7 +93,11 @@ public class Search extends AppCompatActivity implements MyAdapter.OnItemClickLi
         });
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
+<<<<<<< HEAD
         searchView = findViewById(R.id.searchView);
+=======
+        SearchView searchView = findViewById(R.id.searchView);
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 
         // Initialize Firebase Storage
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
@@ -183,7 +207,10 @@ public class Search extends AppCompatActivity implements MyAdapter.OnItemClickLi
             }
         });
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     private void stopSong() {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
@@ -241,9 +268,16 @@ public class Search extends AppCompatActivity implements MyAdapter.OnItemClickLi
         });
     }
 
+<<<<<<< HEAD
     @Override
     public void onItemClick(String itemName) {
 
+=======
+
+
+    @Override
+    public void onItemClick(String itemName) {
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             // Song is already playing, stop it
             stopSong();
@@ -253,5 +287,8 @@ public class Search extends AppCompatActivity implements MyAdapter.OnItemClickLi
         }
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 }

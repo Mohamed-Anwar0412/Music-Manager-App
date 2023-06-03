@@ -19,7 +19,13 @@
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:queryHint="Search Songs" />
+=======
+            android:queryHint="Search Songs"
+
+             />
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

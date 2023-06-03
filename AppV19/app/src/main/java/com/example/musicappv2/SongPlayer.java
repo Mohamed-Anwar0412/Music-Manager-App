@@ -55,9 +55,12 @@ public class SongPlayer extends AppCompatActivity {
     public static ArrayList<String> trackNames = new ArrayList<>();
     private int currentPosition; // Index of the current song in the track list
 
+<<<<<<< HEAD
     private String nextSongUriString;
     private String nextSongName;
 
+=======
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,7 +160,13 @@ public class SongPlayer extends AppCompatActivity {
                 if(mediaPlayer != null && mediaPlayer.isPlaying())
                     mediaPlayer.stop();
 
+<<<<<<< HEAD
                 nextSongIndex++;
+=======
+
+                nextSongIndex++;
+
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
                 MediaPlayer nextSong = arrayList.get(nextSongIndex);
                 name = trackNames.get(nextSongIndex);
 
@@ -187,6 +196,10 @@ public class SongPlayer extends AppCompatActivity {
 
             if (nextSongIndex >= 0 || arrayList.size() == 1) {
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
                 if(mediaPlayer != null && mediaPlayer.isPlaying())
                     mediaPlayer.stop();
 
@@ -278,6 +291,16 @@ public class SongPlayer extends AppCompatActivity {
         // Update the song info
         songInfo.setText(randomTrackName);
     }
+<<<<<<< HEAD
+=======
+
+
+
+    public void updateSongName(String songName){
+        songInfo.setText(songName);
+    }
+
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     private void setPlayer()
     {
         mediaPlayer = ModelRecycleView.nowPlaying;

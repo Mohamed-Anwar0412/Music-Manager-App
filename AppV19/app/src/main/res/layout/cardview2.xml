@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     android:id="@+id/cardViewSearch"
+=======
+    android:id="@+id/cardViewUpdate"
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     android:layout_width="match_parent"
     android:layout_height="90dp"
     android:layout_margin="12dp"
@@ -45,7 +49,11 @@
         </LinearLayout>
 
         <ImageButton
+<<<<<<< HEAD
             android:id="@+id/favorite"
+=======
+            android:id="@+id/deletetButton"
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/orange"

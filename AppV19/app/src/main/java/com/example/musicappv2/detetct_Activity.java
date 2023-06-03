@@ -73,7 +73,10 @@ public class detetct_Activity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.navigation_home) {
+<<<<<<< HEAD
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+=======
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
                 finish();
                 return true;
             }   else if (id == R.id.navigation_search) {
@@ -143,11 +146,19 @@ public class detetct_Activity extends AppCompatActivity {
     }
 
     private void setUpDialog(){
+<<<<<<< HEAD
+=======
+
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottomsheetlayout);
 
         Resultsongtxt = dialog.findViewById(R.id.Resultsongtxt);
         resultatrits = dialog.findViewById(R.id.resultatrits);
+<<<<<<< HEAD
+=======
+
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     }
     private void showDialog(){
 
@@ -166,6 +177,10 @@ public class detetct_Activity extends AppCompatActivity {
                 dialog.getWindow().setGravity(Gravity.BOTTOM);
             }
         });
+<<<<<<< HEAD
+=======
+
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     }
     private void startRecording() {
         mediaRecorder = new MediaRecorder();
@@ -179,6 +194,10 @@ public class detetct_Activity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
         mediaRecorder.start();
     }
 
@@ -261,6 +280,12 @@ public class detetct_Activity extends AppCompatActivity {
         });
     }
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     private boolean checkPermissions() {
         int resultAudio = ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO);
         int resultStorage = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -276,6 +301,10 @@ public class detetct_Activity extends AppCompatActivity {
         }
     }
 
+<<<<<<< HEAD
+=======
+    // Add the onRequestPermissionsResult method to handle the permission request result
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

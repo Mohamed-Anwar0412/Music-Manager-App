@@ -36,8 +36,11 @@ public class ModelRecycleView extends RecyclerView.Adapter<ModelRecycleView.View
     public static ArrayList<MediaPlayer> arrayList;
 
     public static ArrayList<String> trackNames;
+<<<<<<< HEAD
 
     private ArrayList<Boolean> ispreparedMedia;
+=======
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     Context context;
 
     SharedPreferences sp;
@@ -55,12 +58,19 @@ public class ModelRecycleView extends RecyclerView.Adapter<ModelRecycleView.View
 
     private int currentSongIndex = -1;
 
+<<<<<<< HEAD
     public ModelRecycleView(Context context ,ArrayList<MediaPlayer> arrayList, ArrayList<String> trackNames, ArrayList<Boolean> ispreparedMedia)
+=======
+    public ModelRecycleView(Context context ,ArrayList<MediaPlayer> arrayList, ArrayList<String> trackNames)
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     {
         this.arrayList=arrayList;
         this.context=context;
         this.trackNames = trackNames;
+<<<<<<< HEAD
         this.ispreparedMedia = ispreparedMedia;
+=======
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
         preparing = false;
     }
 
@@ -84,12 +94,25 @@ public class ModelRecycleView extends RecyclerView.Adapter<ModelRecycleView.View
     }
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.textView.setText(trackNames.get(position));
         holder.cardView.setOnClickListener(v -> {
+<<<<<<< HEAD
             if (!preparing) {
                 if (nowPlaying != null) {
+=======
+            if (!preparing)
+            {
+                if (nowPlaying != null)
+                {
+                    //nowPlaying.release();
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
                     nowPlaying.pause();
                     nowPlaying.seekTo(0);
                     nowPlaying = null;
@@ -97,7 +120,11 @@ public class ModelRecycleView extends RecyclerView.Adapter<ModelRecycleView.View
 
                 copyArrayListToSongPlayer();
 
+<<<<<<< HEAD
                 nowPlaying = arrayList.get(position);
+=======
+                MediaPlayer mediaPlayer = arrayList.get(position);
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 
                 editor.putString("name", trackNames.get(position));
                 editor.putInt("currentPosition", position);
@@ -108,6 +135,7 @@ public class ModelRecycleView extends RecyclerView.Adapter<ModelRecycleView.View
                 DisplaySongs.smallPlayer.setVisibility(View.VISIBLE);
                 DisplaySongs.paused = false;
 
+<<<<<<< HEAD
                 if (!ispreparedMedia.get(position)){
                     nowPlaying.prepareAsync();
                     preparing = true;
@@ -116,16 +144,52 @@ public class ModelRecycleView extends RecyclerView.Adapter<ModelRecycleView.View
                     nowPlaying.start();
                     preparing = false;
                 }
+=======
+                nowPlaying = mediaPlayer;
+
+
+                nowPlaying.prepareAsync();
+                preparing = true;
+
+                //prepareAsync is the main problem:??
+                //Handle when to stop, release, or reset the song
+
+                //mediaPlayer.reset();
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 
                 nowPlaying.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                     @Override
                     public void onPrepared(MediaPlayer mp) {
                         nowPlaying.start();
+<<<<<<< HEAD
                         ispreparedMedia.set(position, true);
+=======
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
                         preparing = false;
                         //mediaPlayer.start();
                     }
                 });
+<<<<<<< HEAD
+=======
+
+
+//                try {
+//                    nowPlaying.prepareAsync();
+//                    preparing = true;
+//                } catch (IllegalStateException e) {
+//                    e.printStackTrace();
+//                    // Handle the exception
+//                    Toast.makeText(context, "ERROR" + e.toString(), Toast.LENGTH_SHORT).show();
+//                }
+
+
+            }
+
+            else
+            {
+                Toast.makeText(context, "AHHAHAHA", Toast.LENGTH_SHORT).show();
+//
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
             }
         });
 
@@ -168,8 +232,13 @@ public class ModelRecycleView extends RecyclerView.Adapter<ModelRecycleView.View
 
             handler = new Handler();
 
+<<<<<<< HEAD
 //            textView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
 //            textView.setSelected(true);
+=======
+            textView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+            textView.setSelected(true);
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 
             delecticon = itemView.findViewById(R.id.deletetButton);
             delecticon.setOnClickListener(v -> {

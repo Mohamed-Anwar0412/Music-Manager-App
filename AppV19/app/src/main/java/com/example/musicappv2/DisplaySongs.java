@@ -1,15 +1,37 @@
 package com.example.musicappv2;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+<<<<<<< HEAD
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.provider.OpenableColumns;
 
 import android.content.Context;
+=======
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.database.Cursor;
+import android.os.Build;
+import android.provider.OpenableColumns;
+
+import com.example.musicappv2.services.OnClearFromRecentService;
+import com.google.firebase.storage.UploadTask;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 import android.content.SharedPreferences;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
@@ -19,6 +41,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+<<<<<<< HEAD
+=======
+import android.view.animation.AnticipateOvershootInterpolator;
+import android.view.animation.OvershootInterpolator;
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -26,6 +53,10 @@ import android.widget.PopupMenu;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+<<<<<<< HEAD
+=======
+import com.google.android.gms.tasks.OnFailureListener;
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,7 +68,13 @@ import com.google.firebase.storage.StorageReference;
 import java.io.IOException;
 import java.util.ArrayList;
 
+<<<<<<< HEAD
 public class DisplaySongs extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+=======
+import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
+
+public class DisplaySongs extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, Playable {
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     private ModelRecycleView adapter;
     RecyclerView recyclerView;
     FirebaseAuth auth;
@@ -47,6 +84,11 @@ public class DisplaySongs extends AppCompatActivity implements PopupMenu.OnMenuI
     String songName;
     FirebaseUser user;
     Button uploadButton;
+<<<<<<< HEAD
+=======
+    private static final int UPLOAD_BUTTON_ID = R.id.uploadButton;
+    private static final int LOGOUT_BUTTON_ID = R.id.logoutButton;
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     public static LinearLayout smallPlayer;
     public static TextView songPlay;
     public static ImageButton buttonMain;
@@ -63,16 +105,36 @@ public class DisplaySongs extends AppCompatActivity implements PopupMenu.OnMenuI
     LinearLayout mediaPlayerButton;
     ArrayList<MediaPlayer> arrayList=new ArrayList<>();
     ArrayList<String> trackNames = new ArrayList<>();
+<<<<<<< HEAD
     ArrayList<Boolean> ispreparedMedia = new ArrayList<>();
+=======
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 
     //private int currentSongIndex = -1;
 
 
+<<<<<<< HEAD
+=======
+    //Notifcation Related
+    NotificationManager notificationManager;
+    int position = 0;
+    boolean isPlaying = false;
+
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_songs);
 
+<<<<<<< HEAD
+=======
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createChannel();
+            registerReceiver(broadcastReceiver, new IntentFilter("TRACKS_TRACKS"));
+            startService(new Intent(getBaseContext() , OnClearFromRecentService.class));
+        }
+
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
 
@@ -99,7 +161,11 @@ public class DisplaySongs extends AppCompatActivity implements PopupMenu.OnMenuI
         //logoutbutton =findViewById(R.id.logoutButton);
         recyclerView =findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+<<<<<<< HEAD
         adapter = new ModelRecycleView(this, arrayList, trackNames, ispreparedMedia);
+=======
+        adapter = new ModelRecycleView(this, arrayList, trackNames);
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
         //recyclerView.setAdapter(adapter);
 
         smallPlayer = findViewById(R.id.smallPlayer);
@@ -123,6 +189,14 @@ public class DisplaySongs extends AppCompatActivity implements PopupMenu.OnMenuI
         }
 
         mediaPlayerButton.setOnClickListener(v -> {
+<<<<<<< HEAD
+=======
+
+            //Fix
+//            CreateNotification.createNotification(DisplaySongs.this, trackNames.get(1),
+//                    R.drawable.baseline_pause_24, 1, trackNames.size() - 1);
+
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
             SharedPreferences sp = getApplicationContext().getSharedPreferences("songPref", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
             editor.putString("name", songPlay.getText().toString());
@@ -134,16 +208,32 @@ public class DisplaySongs extends AppCompatActivity implements PopupMenu.OnMenuI
         buttonMain.setOnClickListener(v -> {
             nowPlaying = ModelRecycleView.nowPlaying;
             if (paused) {
+<<<<<<< HEAD
+=======
+                onTrackPlay();
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
                 nowPlaying.start();
                 buttonMain.setImageResource(R.drawable.ic_pause);
                 paused = false;
             } else {
+<<<<<<< HEAD
+=======
+                onTrackPause();
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
                 nowPlaying.pause();
                 buttonMain.setImageResource(R.drawable.ic_play);
                 paused = true;
             }
+<<<<<<< HEAD
         });
 
+=======
+
+        });
+
+
+
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
         // Create a Cloud Storage reference from the app
         String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Songs/" + userEmail + "/");
@@ -163,7 +253,10 @@ public class DisplaySongs extends AppCompatActivity implements PopupMenu.OnMenuI
                             String downloadUrl = uri.toString();
                             arrayList.add(setUpMediaPlayer(downloadUrl));
                             trackNames.add(fileRef.getName());
+<<<<<<< HEAD
                             ispreparedMedia.add(false);
+=======
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
                         }
                     }).addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
@@ -186,11 +279,19 @@ public class DisplaySongs extends AppCompatActivity implements PopupMenu.OnMenuI
 
 
         //Animation for recycle view
+<<<<<<< HEAD
 //        ScaleInAnimationAdapter scaleInAnimationAdapter = new ScaleInAnimationAdapter(adapter);
 //        scaleInAnimationAdapter.setDuration(1000);
 //        scaleInAnimationAdapter.setInterpolator(new AnticipateOvershootInterpolator());
 //        scaleInAnimationAdapter.setFirstOnly(false);
 //        recyclerView.setAdapter(scaleInAnimationAdapter);
+=======
+        ScaleInAnimationAdapter scaleInAnimationAdapter = new ScaleInAnimationAdapter(adapter);
+        scaleInAnimationAdapter.setDuration(1000);
+        scaleInAnimationAdapter.setInterpolator(new AnticipateOvershootInterpolator());
+        scaleInAnimationAdapter.setFirstOnly(false);
+        recyclerView.setAdapter(scaleInAnimationAdapter);
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     }
 
 
@@ -236,6 +337,25 @@ public class DisplaySongs extends AppCompatActivity implements PopupMenu.OnMenuI
         trackNames.add(fileName);
     }
 
+<<<<<<< HEAD
+=======
+
+
+    //Notification related Code
+    private void createChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(CreateNotification.CHANNEL_ID,
+                    "Music App", NotificationManager.IMPORTANCE_LOW);
+
+            notificationManager = getSystemService(NotificationManager.class);
+
+            if(notificationManager != null) {
+                notificationManager.createNotificationChannel(channel);
+            }
+        }
+    }
+
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     private void startActivityWithTransition(Intent intent) {
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -245,6 +365,7 @@ public class DisplaySongs extends AppCompatActivity implements PopupMenu.OnMenuI
     @Override
     protected void onResume() {
         super.onResume();
+<<<<<<< HEAD
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
 //        bottomNavigationView.setOnItemSelectedListener(item -> {
 //
@@ -266,6 +387,8 @@ public class DisplaySongs extends AppCompatActivity implements PopupMenu.OnMenuI
 //        });
 
 
+=======
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
         nowPlaying = ModelRecycleView.nowPlaying;
         //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);
         checkPlaying();
@@ -308,6 +431,10 @@ public class DisplaySongs extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
 
+<<<<<<< HEAD
+=======
+    //Might be causing some crashes
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
     private MediaPlayer setUpMediaPlayer(String mp3URL){
         MediaPlayer mediaPlayer = new MediaPlayer();
 
@@ -317,6 +444,10 @@ public class DisplaySongs extends AppCompatActivity implements PopupMenu.OnMenuI
                         .setUsage(AudioAttributes.USAGE_MEDIA)
                         .build()
         );
+<<<<<<< HEAD
+=======
+        //mediaPlayer.reset();
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 
         try {
             mediaPlayer.setDataSource(mp3URL);
@@ -398,4 +529,73 @@ public class DisplaySongs extends AppCompatActivity implements PopupMenu.OnMenuI
         }
         return false;
     }
+<<<<<<< HEAD
+=======
+
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getExtras().getString("actionname");
+            switch (action)
+            {
+                case CreateNotification.ACTION_PREVIOUS:
+                    onTrackPrevious();
+                    break;
+                case CreateNotification.ACTION_PLAY:
+                    if(isPlaying) {
+                        onTrackPause();
+                    } else {
+                        onTrackPlay();
+                    }
+                    break;
+                case CreateNotification.ACTION_NEXT:
+                    onTrackNext();
+                    break;
+            }
+        }
+    };
+
+
+    @Override
+    public void onTrackPrevious() {
+        position--;
+        CreateNotification.createNotification(DisplaySongs.this, trackNames.get(position),
+                R.drawable.baseline_pause_24, position, trackNames.size() - 1);
+        songPlay.setText(trackNames.get(position));
+    }
+
+    @Override
+    public void onTrackPlay() {
+        CreateNotification.createNotification(DisplaySongs.this, trackNames.get(position),
+                R.drawable.baseline_pause_24, position, trackNames.size() - 1);
+        buttonMain.setImageResource(R.drawable.baseline_pause_24);
+        isPlaying = true;
+    }
+
+    @Override
+    public void onTrackPause() {
+        CreateNotification.createNotification(DisplaySongs.this, trackNames.get(position),
+                R.drawable.baseline_pause_24, position, trackNames.size() - 1);
+        buttonMain.setImageResource(R.drawable.baseline_play_arrow_1);
+        isPlaying = false;
+    }
+
+    @Override
+    public void onTrackNext() {
+        position++;
+        CreateNotification.createNotification(DisplaySongs.this, trackNames.get(position),
+                R.drawable.baseline_pause_24, position, trackNames.size() - 1);
+        songPlay.setText(trackNames.get(position));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationManager.cancelAll();
+        }
+
+        unregisterReceiver(broadcastReceiver);
+    }
+>>>>>>> b70b683d156399a1cbe7345c2a180afc7dca0e39
 }
